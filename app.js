@@ -9,8 +9,8 @@ const TOKEN = "https://accounts.spotify.com/api/token";
 
 
 function OnPageLoad() {
-    client_id = localStorage.getItem("client_id");
-    client_secret = localStorage.getItem("client_secret");
+    client_id = sessionStorage.getItem("client_id");
+    client_secret = sessionStorage.getItem("client_secret");
 
 
     if(window.location.search.length > 0) {
@@ -49,11 +49,11 @@ function handleAuthorizationResponse() {
         var data = JSON.parse(this.responseText);
         if(data.access_token != undefined) {
             access_token = data.access_token;
-            localStorage.setItem("access_token", access_token);
+            sessionStorage.setItem("access_token", access_token);
         }
         if(data.refresh_token != undefined)  {
             refresh_token = data.refresh_token;
-            localStorage.setItem("refresh_token", refresh_token);
+            sessionStorage.setItem("refresh_token", refresh_token);
         }
         OnPageLoad();
     } else {
@@ -77,8 +77,8 @@ function getCode() {
 function requestAuthorization() {
     client_id = document.getElementById("clientId").value;
     client_secret = document.getElementById("clientSecret").value;
-    localStorage.setItem("client_id", client_id);
-    localStorage.setItem("client_secret", client_secret);
+    sessionStorage.setItem("client_id", client_id);
+    sessionStorage.setItem("client_secret", client_secret);
 
     let url = AUTHORIZE;
     url += "?client_id=" + client_id;
