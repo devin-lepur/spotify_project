@@ -1,4 +1,4 @@
-var redirect_uri = "C:\Users\Devin\Documents\Projects\spotify_project\index.html";
+var redirect_uri = "https://devin-lepur.github.io/spotify_project/";
 
 
 var client_id = "";
