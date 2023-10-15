@@ -1,10 +1,10 @@
-var redirect_uri = "http://localhost:8888/callback"
+var redirect_uri = "https://devin-lepur.github.io/spotify_project/";
 
 
 var client_id = "";
 var client_secret = "";
 
-const AUTHORIZE = "https://accounts.spotify.com/authorize"
+const AUTHORIZE = "https://accounts.spotify.com/authorize";
 
 function OnPageLoad() {
 
