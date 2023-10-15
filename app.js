@@ -1,4 +1,4 @@
-var redirect_uri = "https://devin-lepur.github.io/spotify_project/"
+var redirect_uri = "http://localhost:8888/callback"
 
 
 var client_id = "";
