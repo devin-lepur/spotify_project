@@ -1,8 +1,8 @@
 var redirect_uri = "https://devin-lepur.github.io/spotify_project/";
 
 
-var client_id = "47911132bbe548e283bd3c2e5c47eae9";
-var client_secret = "1a8b64b81e864fe7bab94449a862b778";
+var client_id = "";
+var client_secret = "";
 
 var access_token = null;
 var refresh_token = null;
@@ -89,10 +89,44 @@ function handleAuthorizationResponse(){
             refresh_token = data.refresh_token;
             localStorage.setItem("refresh_token", refresh_token);
         }
-        onPageLoad();
+        OnPageLoad();
     }
     else {
         console.log(this.responseText);
         alert(this.responseText);
     }
+}
+
+function getUser() {
+    callApi("GET", DISPLAY_NAME, null, handleUserNameResponse)
+}
+
+function handleUserNameResponse() {
+    if(this.status == 200) {
+        var data = JSON.parse(this.responseText)
+        console.log(data);
+    }
+    else if (this.status == 401) {
+        //refreshAccessToken() 16:00
+    }
+    else {
+        console.log(this.responseText);
+        alert(this.responseText);
+    }
+}
+
+function callApi(method, url, body, callback) {
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
+    xhr.send(body);
+    xhr.onload = callback;
+}
+
+async function fetchProfile(token) {
+    const result = await fetch("https://api.spotify.com/v1/me", {
+        method: "GET", headers: { Authorization: 'Bearer ${token}'}
+    });
+    return await result.json();
 }
