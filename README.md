@@ -1,4 +1,10 @@
-# spotify_project
+# spotify_project (Archived)
+Website is functional and gets authorization from spotify. 
+May connect with "Music Machine Learning" project to
+create a website interface that creates a model and
+allows the user to run it on other playlists. Currently
+not in further development (2/27/24)
+
 Create a website that interacts with the Spotify API
 
 There exist libraries like Spotipy that automate many of
